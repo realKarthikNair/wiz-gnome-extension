@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.wiz-lights" path="/org/gnome/shell/extensions/wiz-lights/">
+    <key name="bulb-ip" type="s">
+      <default>'192.168.1.11'</default>
+      <summary>WiZ bulb IP address</summary>
+      <description>IPv4 address of the WiZ smart bulb on your network (e.g. 192.168.1.11)</description>
+    </key>
+    <key name="bulb-port" type="i">
+      <default>38899</default>
+      <summary>WiZ bulb UDP port</summary>
+      <description>UDP port used by the WiZ bulb (default 38899)</description>
+    </key>
+  </schema>
+</schemalist>

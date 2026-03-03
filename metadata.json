@@ -1,0 +1,16 @@
+{
+    "uuid": "wiz-lights@local",
+    "name": "WiZ Lights",
+    "description": "Turn WiZ smart bulbs on or off from the panel",
+    "shell-version": [
+        "45",
+        "46",
+        "47",
+        "48",
+        "49"
+    ],
+    "url": "https://github.com/realkarthiknair/wiz-gnome-extension",
+    "version": 1,
+    "version-name": "1.0",
+    "settings-schema": "org.gnome.shell.extensions.wiz-lights"
+}
