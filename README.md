@@ -1,30 +1,69 @@
 # WiZ Lights GNOME Extension
 
-Turn Philips WiZ smart bulbs on or off from the GNOME Shell panel, using the bundled `toggle-lights.sh` script under the hood.
+A GNOME Shell extension to turn Philips WiZ smart bulbs on or off from the top panel.
 
+Adds a brightness icon to the panel with a dropdown menu: **Turn On** / **Turn Off**. Sends UDP commands to the bulb via the bundled `toggle-lights.sh` script. Bulb IP is configurable in extension preferences.
+
+Supports GNOME Shell 45–49.
+
+## Requirements
+
+- GNOME Shell 45 or later
+- WiZ smart bulb on the same local network
+- `netcat` (`nc`) installed (used by the script for UDP)
 
 ## Install
 
-1. Make sure you are in the `wiz-gnome-extension` directory
+### From releases
 
-2. Now you can either use the `gnome-extensions` CLI to install the extension zip file or you can manually install the extension folder to the `~/.local/share/gnome-shell/extensions` directory   
+1. Download the latest `.zip` from the [Releases](https://github.com/realkarthiknair/wiz-gnome-extension/releases) page.
 
-3. If you are using the `gnome-extensions` CLI, you can run the following command:
-
-```bash
-gnome-extensions install wiz-gnome-extension.zip
-```
-
-4. If you are manually installing the extension folder
+2. Install it:
 
 ```bash
-cp -r wiz-gnome-extension ~/.local/share/gnome-shell/extensions/wiz-lights@local
+gnome-extensions install ~/Downloads/wiz-gnome-extension-<version>.zip
 ```
 
-5. Now you can enable the extension by running the following command:
+3. Log out and log back in.
+
+4. Enable the extension in the GNOME Extensions app, or:
 
 ```bash
 gnome-extensions enable wiz-lights@local
 ```
 
-6. If it is not working, restart the session by logging out and logging in again. Repeat step 5 after logging in again.
+### From source
+
+1. Clone and copy:
+
+```bash
+git clone https://github.com/realkarthiknair/wiz-gnome-extension.git
+cp -r wiz-gnome-extension ~/.local/share/gnome-shell/extensions/wiz-lights@local
+```
+
+2. Log out and log back in.
+
+3. Enable the extension in the GNOME Extensions app, or:
+
+```bash
+gnome-extensions enable wiz-lights@local
+```
+
+## Configuration
+
+Open extension preferences from the GNOME Extensions app (gear icon on WiZ Lights) or:
+
+```bash
+gnome-extensions prefs wiz-lights@local
+```
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Bulb IP address | IPv4 address of your WiZ bulb | `192.168.1.11` |
+| UDP port | Port the bulb listens on | `38899` |
+
+You can find the bulb IP in your router's admin page or the WiZ app.
+
+## Usage
+
+Click the brightness icon in the top panel and choose **Turn On** or **Turn Off**. A desktop notification confirms the result.
