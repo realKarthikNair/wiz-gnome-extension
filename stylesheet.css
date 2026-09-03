@@ -1,0 +1,48 @@
+/* WiZ Lights - panel menu styling. Loaded automatically by GNOME Shell. */
+
+.wiz-menu {
+    min-width: 26em;
+}
+
+/* Section headers: title on the left, current value on the right */
+.wiz-header-row {
+    padding-bottom: 0px;
+}
+
+.wiz-title {
+    font-weight: bold;
+}
+
+.wiz-value {
+    font-weight: normal;
+}
+
+/* Icon + slider rows */
+.wiz-slider-row {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.wiz-slider-box {
+    spacing: 10px;
+}
+
+/* Equal-width button rows */
+.wiz-button-row {
+    padding-top: 2px;
+    padding-bottom: 6px;
+}
+
+.wiz-button {
+    padding: 6px 4px;
+    text-align: center;
+}
+
+/* Hex entry + colour picker */
+.wiz-color-box {
+    spacing: 6px;
+}
+
+.wiz-hex-entry {
+    min-width: 6em;
+}

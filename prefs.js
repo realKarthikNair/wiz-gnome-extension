@@ -1,6 +1,6 @@
-import Gio from 'gi://Gio';
 import Adw from 'gi://Adw';
-import Gtk from 'gi://Gtk?version=4.0';
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
@@ -14,22 +14,19 @@ export default class WizLightsPreferences extends ExtensionPreferences {
         });
         window.add(page);
 
-        const group = new Adw.PreferencesGroup({
+        const bulbGroup = new Adw.PreferencesGroup({
             title: _('WiZ bulb'),
-            description: _('Network address of your WiZ smart bulb. Find the IP in your router or WiZ app.'),
+            description: _('Network address of your WiZ smart bulb. Find the IP in your router or in the WiZ app.'),
         });
-        page.add(group);
+        page.add(bulbGroup);
 
-        const ipRow = new Adw.EntryRow({
-            title: _('Bulb IP address'),
-            text: settings.get_string('bulb-ip'),
-        });
+        const ipRow = new Adw.EntryRow({title: _('Bulb IP address')});
         settings.bind('bulb-ip', ipRow, 'text', Gio.SettingsBindFlags.DEFAULT);
-        group.add(ipRow);
+        bulbGroup.add(ipRow);
 
         const portRow = new Adw.SpinRow({
             title: _('UDP port'),
-            subtitle: _('Default is 38899 for WiZ bulbs'),
+            subtitle: _('WiZ bulbs listen on 38899'),
             adjustment: new Gtk.Adjustment({
                 lower: 1,
                 upper: 65535,
@@ -37,10 +34,17 @@ export default class WizLightsPreferences extends ExtensionPreferences {
                 page_increment: 100,
             }),
         });
-        portRow.set_value(settings.get_int('bulb-port'));
-        portRow.connect('notify::value', () => {
-            settings.set_int('bulb-port', portRow.get_value());
+        settings.bind('bulb-port', portRow, 'value', Gio.SettingsBindFlags.DEFAULT);
+        bulbGroup.add(portRow);
+
+        const panelGroup = new Adw.PreferencesGroup({title: _('Panel icon')});
+        page.add(panelGroup);
+
+        const toggleRow = new Adw.SwitchRow({
+            title: _('Right-click toggles the light'),
+            subtitle: _('Left-click always opens the menu'),
         });
-        group.add(portRow);
+        settings.bind('right-click-toggles-power', toggleRow, 'active', Gio.SettingsBindFlags.DEFAULT);
+        panelGroup.add(toggleRow);
     }
 }
