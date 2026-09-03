@@ -6,6 +6,10 @@ It adds a bulb icon to the panel. Left-click opens a menu with a power switch,
 brightness and white-balance sliders, quick presets and a custom colour entry.
 Right-click toggles the bulb on or off (can be turned off in the settings).
 
+> **Disclaimer:** This project is an independent software project and is **not affiliated with, endorsed by, sponsored by, or otherwise officially associated with Philips or WiZ**. “Philips” and “WiZ” are trademarks of their respective owners.
+
+<img width="1699" height="831" alt="image" src="https://github.com/user-attachments/assets/b38de3ea-8583-4527-8d3c-7ceaf12857f9" />
+
 All communication with the bulb is done by the bundled `wiz.sh` script over
 UDP on your local network. The extension only talks to the bulb when you open
 the menu or change something; there is no background polling.
